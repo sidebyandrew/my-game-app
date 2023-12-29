@@ -1,7 +1,9 @@
 // src/GamePage.tsx
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 const GamePage: React.FC = () => {
+    const [windowInfo, setWindowInfo] = useState("")
+
     const handleStartGame = () => {
         console.log('Game started!');
     };
@@ -10,12 +12,17 @@ const GamePage: React.FC = () => {
         console.log('Game ended!');
     };
 
+    useEffect(() => {
+        if (window) {
+            setWindowInfo(JSON.stringify(window.location))
+        }
+    }, []);
+
     return (
         <div className=" h-screen
         container mx-auto mt-8 mb-20">
             <h1 className="text-2xl font-bold mb-4">环境信息</h1>
-            <div>URL</div>
-            {/* Your environment information goes here */}
+            <div>{windowInfo}</div>
 
             <div className="flex flex-col ">
                 <button
