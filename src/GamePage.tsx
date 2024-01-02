@@ -16,6 +16,15 @@ const GamePage: React.FC = () => {
         if (window) {
             setWindowInfo(JSON.stringify(window.location))
         }
+
+        if (!window) {
+            return;
+        }
+        let  telegramGameProxy= (window as { [key: string]: any })["TelegramGameProxy"];
+        let  telegramWebviewProxy= (window as { [key: string]: any })["TelegramWebviewProxy"];
+        if (window && telegramGameProxy && telegramWebviewProxy) {
+            //telegramWebviewProxy.
+        }
     }, []);
 
     return (
